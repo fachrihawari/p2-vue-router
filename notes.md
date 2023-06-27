@@ -26,7 +26,7 @@ Jelasin slide 4-6
 
 1. Tunjukin kalo ada beberapa folder baru
 2. Bedah router/index.js
-3. Beda main.js
+3. Bedah main.js
 4. Jelasin perbedaan History Mode: https://router.vuejs.org/guide/essentials/history-mode.html
 5. Navigate between pages: https://router.vuejs.org/guide/essentials/navigation.html
   - RouterLink
