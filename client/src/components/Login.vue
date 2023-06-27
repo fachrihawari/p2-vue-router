@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 
 export default {
   data() {
@@ -10,9 +11,26 @@ export default {
     }
   },
   methods: {
-    doLogin() {
-      this.$emit('doLogin', this.inputLogin)
-    }
+    async doLogin() {
+      try {
+        const { data } = await axios({
+          url: 'http://localhost:3000/users',
+          method: 'post',
+          data: this.inputLogin
+        })
+
+        localStorage.access_token = data
+
+        // this.fetchData()
+
+        // this.currentPage = 'home'
+
+        this.$router.push('/')
+      } catch (error) {
+        console.log(error)
+      }
+      // setelah login berhasil aku akan change page
+    },
   }
 }
 

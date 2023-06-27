@@ -1,15 +1,41 @@
 <script>
+import axios from 'axios';
 import Card from './Card.vue';
 
 export default {
-  props: ['girlgroups'],
+  // props: ['girlgroups'],
+  data() {
+    return {
+      girlgroups: []
+    }
+  },
   components: {
     Card
   },
   methods: {
     doEdit(id) {
       this.$emit('doEdit', id)
-    }
+    },
+
+
+    async fetchData() {
+      try {
+        const { data } = await axios({
+          url: 'http://localhost:3000/girlgroups',
+          method: 'get',
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+
+        this.girlgroups = data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
+  created() {
+    this.fetchData()
   }
 }
 </script>

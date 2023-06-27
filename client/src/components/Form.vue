@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -11,9 +13,26 @@ export default {
   },
   props: ['singleGG'],
   methods: {
-    doAdd() {
-      this.$emit('doAdd', this.dataInput)
-    }
+    async doAdd() {
+      try {
+        const { data } = await axios({
+          url: 'http://localhost:3000/girlgroups',
+          method: 'post',
+          data: this.dataInput,
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+
+        console.log(data)
+        // this.fetchData()
+
+        // this.currentPage = 'home'
+        this.$router.push('/')
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   created() {
     if (this.singleGG) { // ini mengecek kondisi apakah formnya lg dipakai u/ edit / add

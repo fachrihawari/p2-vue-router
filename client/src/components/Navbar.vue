@@ -1,27 +1,32 @@
 <script>
 
+import { RouterLink } from 'vue-router';
+
 export default {
-  methods: {
-    goToAddPage() {
-      this.$emit('changePage', 'form')
+    methods: {
+        // goToAddPage() {
+        //   this.$emit('changePage', 'form')
+        // },
+        // goToHome() {
+        //   this.$emit('changePage', 'home')
+        // },
+        doLogout() {
+            // this.$emit('doLogout')
+            localStorage.clear();
+            this.$router.push("/login");
+        }
     },
-    goToHome() {
-      this.$emit('changePage', 'home')
-    },
-    doLogout() {
-      this.$emit('doLogout')
-    }
-  }
+    components: { RouterLink }
 }
 </script>
 
 <template>
   <nav class="navbar navbar-light bg-warning px-5 sticky-top">
-    <a @click.prevent="goToHome" href="#">
+    <RouterLink to="/">
       <span class="navbar-brand mb-0 h1">Database Group</span>
-    </a>
+    </RouterLink>
     <div class="d-flex justify-content-around">
-      <button @click="goToAddPage" class="btn btn-outline-primary me-4">Add New</button>
+      <RouterLink to="/add" class="btn btn-outline-primary me-4">Add New</RouterLink>
       <button @click="doLogout" class="btn btn-outline-danger">Logout</button>
     </div>
   </nav>
