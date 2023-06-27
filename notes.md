@@ -28,4 +28,10 @@ Jelasin slide 4-6
 2. Bedah router/index.js
 3. Beda main.js
 4. Jelasin perbedaan History Mode: https://router.vuejs.org/guide/essentials/history-mode.html
-
+5. Navigate between pages: https://router.vuejs.org/guide/essentials/navigation.html
+  - RouterLink
+  - $router.push()
+6. Dynamic route matching:
+  - Dynamic params https://router.vuejs.org/guide/essentials/dynamic-matching.html#reacting-to-params-changes
+  - Catch not found https://router.vuejs.org/guide/essentials/dynamic-matching.html#catch-all-404-not-found-route
+7. Navigation Guard: https://router.vuejs.org/guide/advanced/navigation-guards.html
