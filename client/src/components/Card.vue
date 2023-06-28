@@ -1,16 +1,16 @@
 <script>
 export default {
-  props: ['girlgroup'] // {name, id, imgUrl}
+  props: ['product'] // {name, id, imgUrl}
 }
 </script>
 
 <template>
   <div class="col-3">
     <div class="card">
-      <img :src="girlgroup.imgUrl" style="height: 12rem; object-fit: cover;" alt="">
+      <img :src="product.mainImg" style="height: 12rem; object-fit: cover;" alt="">
       <div class="card-body">
-        <h5 class="card-title">{{ girlgroup.name }}</h5>
-        <p class="card-text">{{ girlgroup.company }}</p>
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
       </div>
     </div>
   </div>

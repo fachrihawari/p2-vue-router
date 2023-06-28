@@ -18,7 +18,7 @@ export default {
 <template>
   <nav class="navbar navbar-light bg-warning px-5 sticky-top">
     <a @click.prevent="goToHome" href="#">
-      <span class="navbar-brand mb-0 h1">Database Group</span>
+      <span class="navbar-brand mb-0 h1">Product CMS</span>
     </a>
     <div class="d-flex justify-content-around">
       <button @click="goToAddPage" class="btn btn-outline-primary me-4">Add New</button>

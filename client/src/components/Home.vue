@@ -2,7 +2,7 @@
 import Card from './Card.vue';
 
 export default {
-  props: ['girlgroups'],
+  props: ['products'],
   components: {
     Card
   },
@@ -20,7 +20,7 @@ export default {
     <div class="row g-3">
 
       <!-- looping items -->
-      <Card v-for="girlgroup in girlgroups" :key="girlgroup.id" :girlgroup="girlgroup" />
+      <Card v-for="product in products" :key="product.id" :product="product" />
 
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <TableRow @doEdit="doEdit" v-for="girlgroup in girlgroups" :key="girlgroup.id" :girlgroup="girlgroup" />
+        <TableRow @doEdit="doEdit" v-for="product in products" :key="product.id" :product="product" />
       </tbody>
     </table>
   </div> -->

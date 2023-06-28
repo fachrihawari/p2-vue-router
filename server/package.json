@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "json-server-auth db.json --host 127.0.0.1"
+    "start": "json-server-auth db.json --host 127.0.0.1 --watch"
   },
   "devDependencies": {
     "json-server": "^0.17.3",

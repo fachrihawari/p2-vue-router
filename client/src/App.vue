@@ -9,8 +9,8 @@ export default {
   data() {
     return {
       currentPage: 'login',
-      girlgroups: [],
-      singleGG: null
+      products: [],
+      product: null
     }
   },
   components: {
@@ -34,12 +34,13 @@ export default {
     async doLogin(dataInput) {
       try {
         const { data } = await axios({
-          url: 'http://localhost:3000/users',
+          url: 'http://localhost:3000/login',
           method: 'post',
           data: dataInput
         })
 
-        localStorage.access_token = data
+        console.log(data)
+        localStorage.access_token = data.accessToken
 
         this.fetchData()
 
@@ -53,14 +54,14 @@ export default {
     async fetchData() {
       try {
         const { data } = await axios({
-          url: 'http://localhost:3000/girlgroups',
+          url: 'http://localhost:3000/products',
           method: 'get',
           headers: {
             access_token: localStorage.access_token
           }
         })
 
-        this.girlgroups = data
+        this.products = data
       } catch (error) {
         console.log(error)
       }
@@ -68,7 +69,7 @@ export default {
     async postData(dataInput) {
       try {
         const { data } = await axios({
-          url: 'http://localhost:3000/girlgroups',
+          url: 'http://localhost:3000/products',
           method: 'post',
           data: dataInput,
           headers: {
@@ -86,7 +87,7 @@ export default {
     async doEdit(id) {
       console.log(id, 'ini di app');
       // udah dapet data per id nya
-      // masukin ke singleGG
+      // masukin ke product
       // kita pindah ke halaman form
 
       this.currentPage = 'form'
@@ -107,8 +108,8 @@ export default {
 <template>
   <Navbar @changePage="changePage" @doLogout="doLogout" />
   <Login v-if="currentPage === 'login'" @doLogin="doLogin" />
-  <Home v-if="currentPage === 'home'" :girlgroups="girlgroups" @doEdit="doEdit" />
-  <Form v-if="currentPage === 'form'" @doAdd="postData" :singleGG="singleGG" />
+  <Home v-if="currentPage === 'home'" :products="products" @doEdit="doEdit" />
+  <Form v-if="currentPage === 'form'" @doAdd="postData" :product="product" />
 </template>
 
 <style scoped></style>
