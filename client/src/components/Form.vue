@@ -9,17 +9,17 @@ export default {
       },
     }
   },
-  props: ['singleGG'],
+  props: ['product'],
   methods: {
     doAdd() {
       this.$emit('doAdd', this.dataInput)
     }
   },
   created() {
-    if (this.singleGG) { // ini mengecek kondisi apakah formnya lg dipakai u/ edit / add
-      this.dataInput.name = this.singleGG.name
-      this.dataInput.description = this.singleGG.description
-      this.dataInput.mainImg = this.singleGG.mainImg
+    if (this.product) { // ini mengecek kondisi apakah formnya lg dipakai u/ edit / add
+      this.dataInput.name = this.product.name
+      this.dataInput.description = this.product.description
+      this.dataInput.mainImg = this.product.mainImg
     } else {
       this.dataInput.name = ''
       this.dataInput.description = ''

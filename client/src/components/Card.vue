@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['product'] // {name, id, imgUrl}
+  props: ['product'] // {id, name, mainImg, description}
 }
 </script>
 
