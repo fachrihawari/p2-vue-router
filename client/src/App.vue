@@ -10,7 +10,8 @@ export default {
     return {
       currentPage: 'login',
       products: [],
-      product: null
+      product: null,
+      isLoggedIn: false
     }
   },
   components: {
@@ -29,6 +30,7 @@ export default {
     },
     doLogout() {
       localStorage.clear()
+      this.isLoggedIn = false
       this.currentPage = 'login'
     },
     async doLogin(dataInput) {
@@ -41,6 +43,7 @@ export default {
 
         console.log(data)
         localStorage.access_token = data.accessToken
+        this.isLoggedIn = true
 
         this.fetchData()
 
@@ -96,6 +99,7 @@ export default {
   created() {
     if (localStorage.access_token) {
       this.currentPage = 'home'
+      this.isLoggedIn = true
       this.fetchData()
     } else {
       this.currentPage = 'login'
@@ -106,7 +110,7 @@ export default {
 </script>
 
 <template>
-  <Navbar @changePage="changePage" @doLogout="doLogout" />
+  <Navbar @changePage="changePage" @doLogout="doLogout" :isLoggedIn="isLoggedIn" />
   <Login v-if="currentPage === 'login'" @doLogin="doLogin" />
   <Home v-if="currentPage === 'home'" :products="products" @doEdit="doEdit" />
   <Form v-if="currentPage === 'form'" @doAdd="postData" :product="product" />
